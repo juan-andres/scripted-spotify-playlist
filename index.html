@@ -16,5 +16,6 @@
     console.log('loaded')
   });
   oReq.open("GET", spotifyAuthorizeUrl, true);
+  oReq.setRequestHeader('Access-Control-Allow-Headers', '*')
   oReq.send();
 </script>
