@@ -9,13 +9,12 @@
   const clientId = getUrlParameter('client_id');
 
   const spotifyAuthorizeUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=callback`;
-  console.log('spotifyAuthorizeUrl', spotifyAuthorizeUrl);
 
   var oReq = new XMLHttpRequest();
   oReq.addEventListener("load", () => {
     console.log('loaded')
   });
   oReq.open("GET", spotifyAuthorizeUrl, true);
-  oReq.setRequestHeader('Access-Control-Allow-Headers', '*')
+  oReq.withCredentials = true;
   oReq.send();
 </script>
