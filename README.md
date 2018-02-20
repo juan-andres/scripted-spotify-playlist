@@ -9,4 +9,4 @@ If you don't have an Spotify account yet, you can create one for free.
 
 Then you can use the client id given to you in the form :)
 
-![alt text](https://github.com/juan-andres/scripted-spotify-playlist/master/spotify_create_account.png "Spotify Create Account")
+![alt text](https://raw.githubusercontent.com/juan-andres/scripted-spotify-playlist/master/spotify_create_account.jpg "Spotify Create Account")
