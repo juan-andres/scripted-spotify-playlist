@@ -1,1 +1,28 @@
-callback
+<!doctype html>
+<head>
+  <title>Portfolio Page</title>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="script.js"></script>
+  <style>
+    .songsWrapper {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .songWrapper {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .song {
+      width: 200px;
+      height: 200px;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Songs list</h1>
+  <div class="songsWrapper" id="songs"></div>
+  <audio id="player" preload="auto"></audio>
+</body>
+</html>
