@@ -1,5 +1,7 @@
 # scripted-spotify-playlist
 
+![alt text](https://raw.githubusercontent.com/juan-andres/scripted-spotify-playlist/master/songs_preview.jpg "Spotify Create Account")
+
 You need an application's client id
 
 You can get one for free here:
