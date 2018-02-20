@@ -7,8 +7,8 @@
     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
   };
 
-  const clientId = encodeURIComponent(getUrlParameter('client_id'));
-  const redirectUri = encodeURIComponent(window.location.origin + '/callback');
+  const clientId = getUrlParameter('client_id');
+  const redirectUri = window.location.origin + '/callback';
 
   const spotifyAuthorizeUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}`;
 
