@@ -1,19 +1,24 @@
-<button id="login-button">Login</button>
+<!doctype html>
+<head>
+  <title>ScriptEd Spotify Example</title>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+</head>
+<body>
+  <label for="client-id">Paste your client id here</label>
+  <input id="client-id" />
+  <button id="login-button">Login</button>
+</body>
+</html>
 <script>
-  function getUrlParameter(name) {
-    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-    var results = regex.exec(location.search);
-    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-  };
+  $(document).ready(function(){
+    function login() {
+      const clientId = $('#client-id').val();
+      const redirectUri = window.location.origin + window.location.pathname + 'callback';
+      const spotifyAuthorizeUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=user-library-read`;
+      window.location = spotifyAuthorizeUrl;
+    }
 
-  function login() {
-    const clientId = getUrlParameter('client_id');
-    const redirectUri = window.location.origin + window.location.pathname + 'callback';
-    const spotifyAuthorizeUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=user-library-read`;
-    window.location = spotifyAuthorizeUrl;
-  }
-
-  const $loginButton = document.getElementById('login-button');
-  $loginButton.addEventListener('click', login);
+    const $loginButton = document.getElementById('login-button');
+    $loginButton.addEventListener('click', login);
+  });
 </script>
