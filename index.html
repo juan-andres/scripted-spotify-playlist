@@ -1,3 +1,4 @@
+<button id="login-button">Login</button>
 <script>
   function getUrlParameter(name) {
     name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
@@ -6,15 +7,14 @@
     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
   };
 
-  const clientId = getUrlParameter('client_id');
+  const clientId = encodeURIComponent(getUrlParameter('client_id'));
+  const redirectUri = encodeURIComponent(window.location.origin + '/callback');
 
-  const spotifyAuthorizeUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=callback`;
+  const spotifyAuthorizeUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}`;
 
-  var oReq = new XMLHttpRequest();
-  oReq.addEventListener("load", () => {
-    console.log('loaded')
+  const $loginButton = document.getElementById('login-button');
+
+  $loginButton.addEventListener('click', () => {
+      window.location = spotifyAuthorizeUrl;
   });
-  oReq.open("GET", spotifyAuthorizeUrl, true);
-  oReq.setRequestHeader('Access-Control-Allow-Headers', 'https://accounts.spotify.com')
-  oReq.send();
 </script>
