@@ -15,6 +15,6 @@
     console.log('loaded')
   });
   oReq.open("GET", spotifyAuthorizeUrl, true);
-  oReq.withCredentials = true;
+  oReq.setRequestHeader('Access-Control-Allow-Headers', 'https://accounts.spotify.com')
   oReq.send();
 </script>
