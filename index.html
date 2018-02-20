@@ -1,0 +1,20 @@
+<script>
+  function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+  };
+
+  const clientId = getUrlParameter('client_id');
+
+  const spotifyAuthorizeUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=callback`;
+  console.log('spotifyAuthorizeUrl', spotifyAuthorizeUrl);
+
+  var oReq = new XMLHttpRequest();
+  oReq.addEventListener("load", () => {
+    console.log('loaded')
+  });
+  oReq.open("GET", spotifyAuthorizeUrl, true);
+  oReq.send();
+</script>
