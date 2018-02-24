@@ -1,24 +1,49 @@
 <!doctype html>
 <head>
-  <title>ScriptEd Spotify Example</title>
+  <title>ScriptEd Spotify Example Songs List</title>
   <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="https://raw.githubusercontent.com/juan-andres/scripted-spotify-playlist/master/getSpotifySongs.js"></script>
+  <style>
+    .songsWrapper {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .songWrapper {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .song {
+      width: 200px;
+      height: 200px;
+      padding: 8px;
+    }
+  </style>
 </head>
 <body>
-  <label for="client-id">Paste your client id here</label>
-  <input id="client-id" />
-  <button id="login-button">Login</button>
+  <div class="songsWrapper" id="spotify_songs"></div>
 </body>
 </html>
 <script>
   $(document).ready(function(){
-    function login() {
-      const clientId = $('#client-id').val();
-      const redirectUri = window.location.origin + window.location.pathname + 'callback';
-      const spotifyAuthorizeUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=user-library-read`;
-      window.location = spotifyAuthorizeUrl;
+    function loadSongsExample(songs) {
+      // A song object looks like this
+      // {
+      //   name: 'hall of fame',
+      //   image: 'http://whereismyimage.com',
+      //   audio: 'http://linktoanmp3_song.com',
+      // }
+      for (var i = 0; i < songs.length; i++) {
+        const song = songs[i];
+        $('#spotify_songs').append(
+          '<div class="songWrapper">' +
+          '<img class="song" onclick="playPreview(\'' + song.audio + '\')" src="' + song.image + '" />' +
+          '<span>' + song.songName + '</span>' +
+          '</div>'
+        );
+      }
     }
 
-    const $loginButton = document.getElementById('login-button');
-    $loginButton.addEventListener('click', login);
+    getSpotifySongs(loadSongsExample);
   });
 </script>
