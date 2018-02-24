@@ -35,4 +35,5 @@ $(document).ready(function(){
   }
 
   getSpotifySongs(loadSongsExample);
+});
 ```
